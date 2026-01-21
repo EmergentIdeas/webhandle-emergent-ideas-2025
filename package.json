@@ -1,0 +1,29 @@
+{
+  "name": "@webhandle/emergent-ideas-2025",
+  "version": "1.0.0",
+  "description": "",
+  "main": "create-environment.mjs",
+  "scripts": {
+  },
+  "bin": {
+	"run-webhandle": "./environment-start.mjs"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmergentIdeas/webhandle-emergent-ideas-2025.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/EmergentIdeas/webhandle-emergent-ideas-2025/issues"
+  },
+  "homepage": "https://github.com/EmergentIdeas/webhandle-emergent-ideas-2025#readme",
+  "dependencies": {
+    "@webhandle/express-5": "github:EmergentIdeas/webhandle-express-5",
+    "@webhandle/pages-server": "github:EmergentIdeas/webhandle-pages-server",
+    "@webhandle/tripartite-renderer": "github:EmergentIdeas/webhandle-tripartite-renderer"
+  }
+}
