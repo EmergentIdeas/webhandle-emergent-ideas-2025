@@ -6,6 +6,9 @@ import path from "node:path"
 
 export default async function createEnvironment() {
 	let webhandle = await express5Setup()
+	if(!globalThis.webhandle) {
+		globalThis.webhandle = webhandle
+	}
 	webhandle.projectRoot = path.resolve(webhandle.projectRoot)
 	listenOnHttpServer(webhandle)
 	setupTripartiteRenderer(webhandle)
@@ -14,7 +17,7 @@ export default async function createEnvironment() {
 	let publicPath = path.resolve(webhandle.projectRoot, './public')
 
 
-	webhandle.app.set('views', templatesPath) // specify the views directory
+	// webhandle.app.set('views', templatesPath) // specify the views directory
 	webhandle.addTemplateDir(templatesPath)
 	webhandle.addStaticDir(publicPath)
 
