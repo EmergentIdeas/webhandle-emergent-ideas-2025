@@ -1,7 +1,7 @@
 import express5Setup from '@webhandle/express-5'
 import listenOnHttpServer from "@webhandle/core/lib/listen-on-http-server.mjs";
-import setupTripartiteRenderer from '@webhandle/tripartite-renderer/setup-tripartite-renderer.mjs';
-import setupPagesServerMiddleware from '@webhandle/pages-server'
+import setupTripartiteRenderer from '@webhandle/tripartite-renderer/initialize-webhandle-component.mjs';
+import setupPages from '@webhandle/pages-server/initialize-webhandle-component.mjs'
 import path from "node:path"
 
 export default async function createEnvironment() {
@@ -13,15 +13,12 @@ export default async function createEnvironment() {
 	listenOnHttpServer(webhandle)
 	setupTripartiteRenderer(webhandle)
 
-	let templatesPath = path.resolve(webhandle.projectRoot, './views')
-	let publicPath = path.resolve(webhandle.projectRoot, './public')
+	// We don't need to add the views directory since this is what express does already
+	// and will be automatically included as an uncached source of templates
 
+	webhandle.addStaticDir('public', {fixedSetOfFiles: false})
 
-	// webhandle.app.set('views', templatesPath) // specify the views directory
-	webhandle.addTemplateDir(templatesPath)
-	webhandle.addStaticDir(publicPath)
-
-	setupPagesServerMiddleware(webhandle)
-
+	await setupPages(webhandle)
+	
 	return webhandle
 }
