@@ -11,7 +11,7 @@ export default async function createEnvironment() {
 	}
 	webhandle.projectRoot = path.resolve(webhandle.projectRoot)
 	listenOnHttpServer(webhandle)
-	setupTripartiteRenderer(webhandle)
+	await setupTripartiteRenderer(webhandle)
 
 	// We don't need to add the views directory since this is what express does already
 	// and will be automatically included as an uncached source of templates
