@@ -3,6 +3,8 @@ import listenOnHttpServer from "@webhandle/core/lib/listen-on-http-server.mjs";
 import setupTripartiteRenderer from '@webhandle/tripartite-renderer/initialize-webhandle-component.mjs';
 import setupPages from '@webhandle/pages-server/initialize-webhandle-component.mjs'
 import path from "node:path"
+import setupExternalResources from "@webhandle/external-resource-manager/initialize-webhandle-component.mjs"
+import setupSessionCookie from "@webhandle/session-cookie/initialize-webhandle-component.mjs"
 
 export default async function createEnvironment() {
 	let webhandle = await express5Setup()
@@ -19,6 +21,10 @@ export default async function createEnvironment() {
 	webhandle.addStaticDir('public', {fixedSetOfFiles: false})
 
 	await setupPages(webhandle)
+	
+	await setupExternalResources(webhandle)
+	
+	await setupSessionCookie(webhandle)
 	
 	return webhandle
 }

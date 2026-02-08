@@ -6,6 +6,7 @@
 	"scripts": {},
 	"bin": {
 		"run-webhandle": "./environment-start.mjs"
+		, "run-webhandle-debug": "./environment-start-debug.mjs"
 	},
 	"repository": {
 		"type": "git",
@@ -21,7 +22,9 @@
 	"homepage": "https://github.com/EmergentIdeas/webhandle-emergent-ideas-2025#readme",
 	"dependencies": {
 		"@webhandle/express-5": "github:EmergentIdeas/webhandle-express-5",
+		"@webhandle/external-resource-manager": "github:EmergentIdeas/webhandle-external-resource-manager",
 		"@webhandle/pages-server": "github:EmergentIdeas/webhandle-pages-server",
+		"@webhandle/session-cookie": "github:EmergentIdeas/webhandle-session-cookie",
 		"@webhandle/tripartite-renderer": "github:EmergentIdeas/webhandle-tripartite-renderer"
 	}
 }
