@@ -5,8 +5,8 @@
 	"main": "create-environment.mjs",
 	"scripts": {},
 	"bin": {
-		"run-webhandle": "./environment-start.mjs"
-		, "run-webhandle-debug": "./environment-start-debug.mjs"
+		"run-webhandle": "./environment-start.mjs",
+		"run-webhandle-debug": "./environment-start-debug.mjs"
 	},
 	"repository": {
 		"type": "git",
@@ -21,10 +21,13 @@
 	},
 	"homepage": "https://github.com/EmergentIdeas/webhandle-emergent-ideas-2025#readme",
 	"dependencies": {
-		"@webhandle/express-5": "github:EmergentIdeas/webhandle-express-5",
-		"@webhandle/external-resource-manager": "github:EmergentIdeas/webhandle-external-resource-manager",
-		"@webhandle/pages-server": "github:EmergentIdeas/webhandle-pages-server",
-		"@webhandle/session-cookie": "github:EmergentIdeas/webhandle-session-cookie",
-		"@webhandle/tripartite-renderer": "github:EmergentIdeas/webhandle-tripartite-renderer"
+		"@webhandle/express-5": "^1.0.0",
+		"@webhandle/external-resource-manager": "^1.0.0",
+		"@webhandle/mongo-db-loader": "^1.0.0",
+		"@webhandle/pages-server": "^1.0.0",
+		"@webhandle/session-cookie": "^1.0.0",
+		"@webhandle/tracker-flash-message": "^1.0.0",
+		"@webhandle/tripartite-renderer": "^1.0.0",
+		"@webhandle/users-data-service": "^1.0.0"
 	}
 }
