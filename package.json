@@ -6,7 +6,9 @@
 	"scripts": {},
 	"bin": {
 		"run-webhandle": "./environment-start.mjs",
-		"run-webhandle-debug": "./environment-start-debug.mjs"
+		"run-webhandle-dev": "./environment-start-dev.mjs",
+		"run-webhandle-debug": "./environment-start-debug.mjs",
+		"run-webhandle-inspect": "./environment-start-inspect.mjs"
 	},
 	"repository": {
 		"type": "git",
@@ -15,19 +17,23 @@
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
-	"type": "commonjs",
+	"type": "module",
 	"bugs": {
 		"url": "https://github.com/EmergentIdeas/webhandle-emergent-ideas-2025/issues"
 	},
 	"homepage": "https://github.com/EmergentIdeas/webhandle-emergent-ideas-2025#readme",
 	"dependencies": {
 		"@webhandle/express-5": "^1.0.0",
-		"@webhandle/external-resource-manager": "^1.0.0",
+		"@webhandle/external-resource-manager": "^1.0.3",
+		"@webhandle/login": "^1.0.0",
 		"@webhandle/mongo-db-loader": "^1.0.0",
 		"@webhandle/pages-server": "^1.0.0",
 		"@webhandle/session-cookie": "^1.0.0",
-		"@webhandle/tracker-flash-message": "^1.0.0",
+		"@webhandle/site-editor-bridge": "^1.0.2",
+		"@webhandle/tracker-flash-message": "^1.0.1",
 		"@webhandle/tripartite-renderer": "^1.0.0",
-		"@webhandle/users-data-service": "^1.0.0"
+		"@webhandle/user-agent-detection": "^1.0.0",
+		"@webhandle/user-management": "^1.0.1",
+		"@webhandle/users-data-service": "^1.0.5"
 	}
 }

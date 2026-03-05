@@ -7,6 +7,11 @@ import setupExternalResources from "@webhandle/external-resource-manager/initial
 import setupSessionCookie from "@webhandle/session-cookie/initialize-webhandle-component.mjs"
 import setupFlashMessages from "@webhandle/tracker-flash-message/initialize-webhandle-component.mjs"
 import mongoDBLoader from "@webhandle/mongo-db-loader/initialize-webhandle-component.mjs"
+import userManagementSetup from "@webhandle/user-management/initialize-webhandle-component.mjs"
+import setupLogin from "@webhandle/login/initialize-webhandle-component.mjs"
+import siteEditorBridgeSetup from "@webhandle/site-editor-bridge/initialize-webhandle-component.mjs"
+import setupUserAgentDetection from "@webhandle/user-agent-detection/initialize-webhandle-component.mjs"
+import setupDecodePath from './lib/decode-path.mjs';
 
 export default async function createEnvironment() {
 	let webhandle = await express5Setup()
@@ -18,8 +23,13 @@ export default async function createEnvironment() {
 			global.webhandle = webhandle
 		}
 	}
+	
+	setupDecodePath(webhandle)
 
 	webhandle.projectRoot = path.resolve(webhandle.projectRoot)
+
+	await setupUserAgentDetection(webhandle)
+
 	listenOnHttpServer(webhandle)
 	await setupTripartiteRenderer(webhandle)
 
@@ -37,6 +47,12 @@ export default async function createEnvironment() {
 	await setupFlashMessages(webhandle)
 	
 	await mongoDBLoader(webhandle)
+
+	await setupLogin(webhandle)
+
+	await userManagementSetup(webhandle)
+
+	await siteEditorBridgeSetup(webhandle)
 
 	return webhandle
 }
