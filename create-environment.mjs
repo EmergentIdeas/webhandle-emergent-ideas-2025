@@ -24,6 +24,9 @@ export default async function createEnvironment() {
 		}
 	}
 	
+	let modConfig = webhandle.config['@webhandle/emergent-ideas-2025'] || {}
+
+	
 	setupDecodePath(webhandle)
 
 	webhandle.projectRoot = path.resolve(webhandle.projectRoot)
@@ -31,28 +34,35 @@ export default async function createEnvironment() {
 	await setupUserAgentDetection(webhandle)
 
 	listenOnHttpServer(webhandle)
-	await setupTripartiteRenderer(webhandle)
-
-	// We don't need to add the views directory since this is what express does already
-	// and will be automatically included as an uncached source of templates
-
-	webhandle.addStaticDir('public', {fixedSetOfFiles: false})
-
-	await setupPages(webhandle)
 	
-	await setupExternalResources(webhandle)
 	
-	await setupSessionCookie(webhandle)
-	
-	await setupFlashMessages(webhandle)
-	
-	await mongoDBLoader(webhandle)
+	if(!modConfig.excludeBasicInfrastructure) {
 
-	await setupLogin(webhandle)
+		await setupTripartiteRenderer(webhandle)
 
-	await userManagementSetup(webhandle)
+		// We don't need to add the views directory since this is what express does already
+		// and will be automatically included as an uncached source of templates
 
-	await siteEditorBridgeSetup(webhandle)
+		webhandle.addStaticDir('public', {fixedSetOfFiles: false})
+
+		await setupPages(webhandle)
+		
+		await setupExternalResources(webhandle)
+		
+		await setupSessionCookie(webhandle)
+		
+		await setupFlashMessages(webhandle)
+		
+		await mongoDBLoader(webhandle)
+
+		await setupLogin(webhandle)
+
+		if(!modConfig.excludeManagementTools) {
+			await userManagementSetup(webhandle)
+
+			await siteEditorBridgeSetup(webhandle)
+		}
+	}
 
 	return webhandle
 }
