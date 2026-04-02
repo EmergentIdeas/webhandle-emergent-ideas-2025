@@ -12,6 +12,7 @@ import setupLogin from "@webhandle/login/initialize-webhandle-component.mjs"
 import siteEditorBridgeSetup from "@webhandle/site-editor-bridge/initialize-webhandle-component.mjs"
 import setupUserAgentDetection from "@webhandle/user-agent-detection/initialize-webhandle-component.mjs"
 import setupDecodePath from './lib/decode-path.mjs';
+import editorSetup from "@webhandle/menu-set-editor/initialize-webhandle-component.mjs"
 
 export default async function createEnvironment() {
 	let webhandle = await express5Setup()
@@ -61,6 +62,8 @@ export default async function createEnvironment() {
 			await userManagementSetup(webhandle)
 
 			await siteEditorBridgeSetup(webhandle)
+
+			await editorSetup(webhandle)
 		}
 	}
 
