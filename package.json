@@ -1,6 +1,6 @@
 {
 	"name": "@webhandle/emergent-ideas-2025",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "",
 	"main": "create-environment.mjs",
 	"scripts": {},
@@ -23,8 +23,9 @@
 	},
 	"homepage": "https://github.com/EmergentIdeas/webhandle-emergent-ideas-2025#readme",
 	"dependencies": {
-		"@webhandle/express-5": "^1.0.0",
+		"@webhandle/express-5": "^1.0.1",
 		"@webhandle/external-resource-manager": "^1.0.3",
+		"@webhandle/firefox-importmap-consolidator": "^1.0.0",
 		"@webhandle/login": "^1.0.0",
 		"@webhandle/menu-loader": "^1.0.1",
 		"@webhandle/menu-set-editor": "^1.0.1",
@@ -33,7 +34,7 @@
 		"@webhandle/session-cookie": "^1.0.0",
 		"@webhandle/site-editor-bridge": "^1.0.4",
 		"@webhandle/tracker-flash-message": "^1.0.1",
-		"@webhandle/tripartite-renderer": "^1.0.4",
+		"@webhandle/tripartite-renderer": "^1.0.5",
 		"@webhandle/user-agent-detection": "^1.0.0",
 		"@webhandle/user-management": "^1.0.1",
 		"@webhandle/users-data-service": "^1.0.5",

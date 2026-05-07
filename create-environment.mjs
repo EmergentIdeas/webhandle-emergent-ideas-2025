@@ -14,6 +14,7 @@ import setupUserAgentDetection from "@webhandle/user-agent-detection/initialize-
 import setupDecodePath from './lib/decode-path.mjs';
 import menuEditorSetup from "@webhandle/menu-set-editor/initialize-webhandle-component.mjs"
 import setupMenuLoader from "@webhandle/menu-loader/initialize-webhandle-component.mjs"
+import setupFirefoxImportmapConsolidator from "@webhandle/firefox-importmap-consolidator/initialize-webhandle-component.mjs"
 
 export default async function createEnvironment() {
 	let webhandle = await express5Setup()
@@ -44,6 +45,9 @@ export default async function createEnvironment() {
 
 		// We don't need to add the views directory since this is what express does already
 		// and will be automatically included as an uncached source of templates
+		
+		
+		await setupFirefoxImportmapConsolidator(webhandle)
 
 		webhandle.addStaticDir('public', {fixedSetOfFiles: false})
 
