@@ -15,6 +15,9 @@ import setupDecodePath from './lib/decode-path.mjs';
 import menuEditorSetup from "@webhandle/menu-set-editor/initialize-webhandle-component.mjs"
 import setupMenuLoader from "@webhandle/menu-loader/initialize-webhandle-component.mjs"
 import setupFirefoxImportmapConsolidator from "@webhandle/firefox-importmap-consolidator/initialize-webhandle-component.mjs"
+import setupPageEditor from "@webhandle/tree-page-properties-editor/initialize-webhandle-component.mjs"
+import pageEditorSetup from "@webhandle/page-editor/initialize-webhandle-component.mjs"
+import setupMailBridge from "@webhandle/mail-bridge/initialize-webhandle-component.mjs"
 
 export default async function createEnvironment() {
 	let webhandle = await express5Setup()
@@ -71,6 +74,12 @@ export default async function createEnvironment() {
 			await menuEditorSetup(webhandle)
 
 			await setupMenuLoader(webhandle)
+			
+			let managerPageEditor = await setupPageEditor(webhandle)
+
+			let pageEditorManager = await pageEditorSetup(webhandle)
+
+			let managerMailBridge = await setupMailBridge(webhandle)
 		}
 	}
 
