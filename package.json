@@ -1,6 +1,6 @@
 {
 	"name": "@webhandle/emergent-ideas-2025",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"description": "",
 	"main": "create-environment.mjs",
 	"scripts": {},
@@ -30,6 +30,7 @@
 		"@webhandle/express-5": "^1.0.1",
 		"@webhandle/external-resource-manager": "^1.0.3",
 		"@webhandle/firefox-importmap-consolidator": "^1.0.0",
+		"@webhandle/lock-service-in-memory": "^1.0.0",
 		"@webhandle/login": "^1.0.0",
 		"@webhandle/mail-bridge": "^1.0.1",
 		"@webhandle/menu-loader": "^1.0.1",

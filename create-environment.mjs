@@ -18,6 +18,7 @@ import setupFirefoxImportmapConsolidator from "@webhandle/firefox-importmap-cons
 import setupPageEditor from "@webhandle/tree-page-properties-editor/initialize-webhandle-component.mjs"
 import pageEditorSetup from "@webhandle/page-editor/initialize-webhandle-component.mjs"
 import setupMailBridge from "@webhandle/mail-bridge/initialize-webhandle-component.mjs"
+import setupLockService from "@webhandle/lock-service-in-memory/initialize-webhandle-component.mjs"
 
 export default async function createEnvironment() {
 	try {
@@ -45,6 +46,8 @@ export default async function createEnvironment() {
 
 
 		if (!modConfig.excludeBasicInfrastructure) {
+
+			await setupLockService(webhandle)
 
 			await setupTripartiteRenderer(webhandle)
 
