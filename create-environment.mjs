@@ -20,68 +20,75 @@ import pageEditorSetup from "@webhandle/page-editor/initialize-webhandle-compone
 import setupMailBridge from "@webhandle/mail-bridge/initialize-webhandle-component.mjs"
 
 export default async function createEnvironment() {
-	let webhandle = await express5Setup()
-	if(!globalThis.webhandle) {
-		globalThis.webhandle = webhandle
-	}
-	if(typeof global !== 'undefined') {
-		if(!global.webhandle) {
-			global.webhandle = webhandle
+	try {
+
+		let webhandle = await express5Setup()
+		if (!globalThis.webhandle) {
+			globalThis.webhandle = webhandle
 		}
-	}
-	
-	let modConfig = webhandle.config['@webhandle/emergent-ideas-2025'] || {}
-
-	
-	setupDecodePath(webhandle)
-
-	webhandle.projectRoot = path.resolve(webhandle.projectRoot)
-
-	await setupUserAgentDetection(webhandle)
-
-	listenOnHttpServer(webhandle)
-	
-	
-	if(!modConfig.excludeBasicInfrastructure) {
-
-		await setupTripartiteRenderer(webhandle)
-
-		// We don't need to add the views directory since this is what express does already
-		// and will be automatically included as an uncached source of templates
-		
-		
-		await setupFirefoxImportmapConsolidator(webhandle)
-
-		webhandle.addStaticDir('public', {fixedSetOfFiles: false})
-
-		await setupPages(webhandle)
-		
-		await setupExternalResources(webhandle)
-		
-		await setupSessionCookie(webhandle)
-		
-		await setupFlashMessages(webhandle)
-		
-		await mongoDBLoader(webhandle)
-
-		await setupLogin(webhandle)
-
-		if(!modConfig.excludeManagementTools) {
-			await userManagementSetup(webhandle)
-
-			await siteEditorBridgeSetup(webhandle)
-
-			await menuEditorSetup(webhandle)
-
-			await setupMenuLoader(webhandle)
-			
-			let managerPageEditor = await setupPageEditor(webhandle)
-
-			let pageEditorManager = await pageEditorSetup(webhandle)
-
-			let managerMailBridge = await setupMailBridge(webhandle)
+		if (typeof global !== 'undefined') {
+			if (!global.webhandle) {
+				global.webhandle = webhandle
+			}
 		}
-	}
 
-	return webhandle
+		let modConfig = webhandle.config['@webhandle/emergent-ideas-2025'] || {}
+
+
+		setupDecodePath(webhandle)
+
+		webhandle.projectRoot = path.resolve(webhandle.projectRoot)
+
+		await setupUserAgentDetection(webhandle)
+
+		listenOnHttpServer(webhandle)
+
+
+		if (!modConfig.excludeBasicInfrastructure) {
+
+			await setupTripartiteRenderer(webhandle)
+
+			// We don't need to add the views directory since this is what express does already
+			// and will be automatically included as an uncached source of templates
+
+
+			await setupFirefoxImportmapConsolidator(webhandle)
+
+			webhandle.addStaticDir('public', { fixedSetOfFiles: false })
+
+			await setupPages(webhandle)
+
+			await setupExternalResources(webhandle)
+
+			await setupSessionCookie(webhandle)
+
+			await setupFlashMessages(webhandle)
+
+			await mongoDBLoader(webhandle)
+
+			await setupLogin(webhandle)
+
+			if (!modConfig.excludeManagementTools) {
+				await userManagementSetup(webhandle)
+
+				await siteEditorBridgeSetup(webhandle)
+
+				await menuEditorSetup(webhandle)
+
+				await setupMenuLoader(webhandle)
+
+				let managerPageEditor = await setupPageEditor(webhandle)
+
+				let pageEditorManager = await pageEditorSetup(webhandle)
+
+				let managerMailBridge = await setupMailBridge(webhandle)
+			}
+		}
+
+		return webhandle
+	}
+	catch (e) {
+		console.log(e)
+		throw e
+	}
 }
